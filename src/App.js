@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import { flushSync } from "react-dom";
 
 function App() {
+  console.log("RENDER渲染");
+
+  let [x, setX] = useState(10),
+    [y, setY] = useState(20),
+    [z, setZ] = useState(30);
+
+  const handle = () => {
+    setTimeout(() => {
+      setX(x + 1);
+      setY(y + 1);
+      setZ(z + 1);
+    }, 1000);
+    // setZ(z + 1);
+    // flushSync(() => {
+    //   setX(x + 1);
+    //   setY(y + 1);
+    // });
+    // for (let i = 0; i < 10; i++) {
+    //   // flushSync(() => {
+    //   //   setX(x + 1);
+    //   // });
+    //   setX((pre) => pre + 1);
+    // }
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>x: {x}</div>
+      <div>y: {y}</div>
+      <div>z: {z}</div>
+      <button onClick={handle}>点击</button>
     </div>
   );
 }
