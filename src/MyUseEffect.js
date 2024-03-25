@@ -1,5 +1,11 @@
 import "./App.css";
-import React, { useState, useEffect, useRef, useImperativeHandle } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useImperativeHandle,
+  useCallback,
+} from "react";
 import { flushSync } from "react-dom";
 
 class Child extends React.Component {
@@ -21,7 +27,9 @@ const Child2 = React.forwardRef(function Child2(props, ref) {
     console.log("22");
     setText(newText);
   };
-  useImperativeHandle(ref, () => ({ changeText }));
+  useImperativeHandle(ref, () => {
+    return { changeText: changeText };
+  });
   return (
     <div className="child-box">
       <div>Child2--Function组件</div>
@@ -34,16 +42,19 @@ function MyUseEffect() {
   let box = useRef(null);
   let box2 = useRef(null);
 
-  useEffect(() => {
-    // console.log("box: ", box.current);
-    console.log("box2: ", box2.current);
+  // useEffect(() => {
+  //   console.log("box: ", box.current);
+  //   console.log("box2: ", box2.current);
+  // }, []);
+  const handleChildren2 = useCallback(() => {
+    box2.current.changeText("KKKK");
   }, []);
-  const handleChildren2 = box2.current.changeText
+
   return (
     <div>
       <Child ref={box} />
       <Child2 ref={box2} />
-      <button onClick={handleChildren2.bind(null,"KKKK")}>
+      <button onClick={handleChildren2.bind(null, "KKKK")}>
         点我改变Child2
       </button>
     </div>

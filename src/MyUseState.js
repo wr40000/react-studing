@@ -1,9 +1,8 @@
-import "./App.css";
 import { useState } from "react";
 import { flushSync } from "react-dom";
 
 function MyUseState() {
-  console.log("MyUseState--RENDER渲染");
+  // console.log("MyUseState--RENDER渲染");
 
   let [x, setX] = useState(10),
     [y, setY] = useState(20),
@@ -28,7 +27,7 @@ function MyUseState() {
     }
   };
   return (
-    <div className="App">
+    <div>
       <div>x: {x}</div>
       <div>y: {y}</div>
       <div>z: {z}</div>
