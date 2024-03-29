@@ -1,5 +1,10 @@
 .App {
   width: 500px;
-  height: 700px;
+  height: 1000px;
   background-color: #90e485;
+  display: inline-block;
+}
+.routerContainer{
+  border: 1px rgb(0, 0, 0) solid;
+  padding: 10px;
 }

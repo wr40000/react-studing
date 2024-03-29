@@ -2,19 +2,25 @@ import "./App.css";
 import MyUseState from "./MyUseState";
 import MyUseEffect from "./MyUseEffect";
 import ReduxStudy from "./views/ReduxStudy";
-
+import RouterView from "./router";
+import { HashRouter } from "react-router-dom";
 function App() {
   return (
+    <HashRouter>
       <div className="App">
         <hr />
-        <h3>MyUseEffect</h3>
         <MyUseEffect />
         <hr />
-        <h3>MyUseState</h3>
         <MyUseState />
         <hr />
         <ReduxStudy />
+        <hr />
+        <h3>Router</h3>
+        <div className="routerContainer">
+          <RouterView></RouterView>
+        </div>
       </div>
+    </HashRouter>
   );
 }
 

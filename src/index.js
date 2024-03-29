@@ -5,6 +5,7 @@ import App from "./App";
 import store from "./store/index";
 // import ThemeContext from "./ThemeContext";
 import { Provider } from "react-redux";
+import VirtualList from './views/VirtualList'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -12,6 +13,7 @@ root.render(
     {/* <ThemeContext.Provider value={{ store }}> */}
     <Provider store={ store }>
       <App />
+      <VirtualList/>
     </Provider>
     {/* </ThemeContext.Provider> */}
   </React.StrictMode>
